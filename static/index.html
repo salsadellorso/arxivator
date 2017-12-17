@@ -2,27 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <title>Bookmarker</title>
 </head>
 <body ng-app="app" ng-controller="Controlla as app">
 
-<br> <br> <br> <br>
+<h3>There will be arxivator</h3>
+
+<br>
 
 <form>
-    <input type="text" ng-model="tempInput" />
+    <input type="text" ng-model="title" placeholder="RYM" />
+    <input type="text" ng-model="content" placeholder = "https://rateyourmusic.com/" />
     <button ng-click="app.addBookmark()">Add Bookmark</button>
 </form>
 
+<br>
+
 <div ng-repeat="bookmark in app.bms">
     <a target="_blank" href = "{{ bookmark.content }}">{{bookmark.title}}</a>
-    <div class="ui">
-        <input type="text" ng-model="bookmark.title"/>
-        <button ng-click="app.updateBookmark(bookmark)">Update</button>
-        <button ng-click="app.deleteBookmark(bookmark)">Delete</button>
-    </div>
+        <div class ="container">
+            <input type="text" ng-model="bookmark.title"/>
+            <button ng-click="app.updateBookmark(bookmark)">Update</button>
+            <button ng-click="app.deleteBookmark(bookmark)">Delete</button>
+        </div>
 </div>
+
 
 <script src="angular_bower/angular.js"></script>
 <script src="js/app.js"></script>
+<script src ="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </body>
 </html>

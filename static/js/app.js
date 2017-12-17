@@ -1,19 +1,18 @@
 const app =  angular.module("app", []);
 
-app.controller("Controlla", function ($http) {
+app.controller("Controlla", function ($scope, $http) {
     const app = this;
-    var tempInput = "https://rateyourmusic.com/";
 
-    $http.get("/api/bookmark").then(function (data) {
+    $http.get("/api/bookmark/").then(function (data) {
         app.bms = data.data.objects;
     });
 
     app.addBookmark = function () {
 
-        $http.post("api/bookmark", {"title": "default", "content": tempInput})
+        $http.post("api/bookmark/", {"title": $scope.title, "content": $scope.content})
             .then(function (response) {
                 app.bms.push(response);
-                tempInput = "";
+                console.log("Added: ", response);
             })
     };
 
@@ -21,7 +20,7 @@ app.controller("Controlla", function ($http) {
         $http.delete("api/bookmark/" + bookmark.id)
             .then(function (response) {
                 app.bms.splice(app.bms.indexOf(bookmark), 1);
-                console.log("Delete", response);
+                console.log("Deleted: ", response);
             })
     };
 
@@ -29,7 +28,7 @@ app.controller("Controlla", function ($http) {
         console.log(bookmark.id);
         $http.put("api/bookmark/" + bookmark.id, bookmark)
             .then(function (response) {
-                console.log("update suc", response);
+                console.log("Updated: ", response);
             })
     };
 });
