@@ -3,13 +3,13 @@ const app =  angular.module("app", []);
 app.controller("Controlla", function ($scope, $http) {
     const app = this;
 
-    $http.get("/api/bookmark/").then(function (data) {
+    $http.get("/api/bookmark").then(function (data) {
         app.bms = data.data.objects;
     });
 
     app.addBookmark = function () {
 
-        $http.post("api/bookmark/", {"title": $scope.title, "content": $scope.content})
+        $http.post("api/bookmark", {"title": $scope.title, "content": $scope.content})
             .then(function (response) {
                 app.bms.push(response);
                 console.log("Added: ", response);

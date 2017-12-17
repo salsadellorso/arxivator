@@ -15,6 +15,7 @@ class Bookmark(db.Model):
 
 
 db.create_all()
+
 api_manager = APIManager(app, flask_sqlalchemy_db=db)
 api_manager.create_api(Bookmark, methods=['GET', 'POST', 'DELETE', 'PUT'])
 
