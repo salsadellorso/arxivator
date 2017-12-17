@@ -22,5 +22,5 @@ var/
 # Installer logs
 pip-log.txt
 
-# databese
-.db
+# database
+*.db
