@@ -25,7 +25,7 @@ def index():
     return app.send_static_file('index.html')
 
 
-app.debug = True
+# app.debug = True
 
 if __name__ == '__main__':
     app.run()

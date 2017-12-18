@@ -12,20 +12,36 @@
 <br>
 
 <form>
-    <input type="text" ng-model="title" placeholder="RYM" />
-    <input type="text" ng-model="content" placeholder = "https://rateyourmusic.com/" />
-    <button ng-click="app.addBookmark()">Add Bookmark</button>
+    <div class="form-group row">
+        <label for="inputTitle0" class="col-sm-1 col-form-label">Title</label>
+        <div class="col-sm-6">
+          <input type="text"  class="form-control" id="inputTitle0" ng-model="title" placeholder="RYM" />
+        </div>
+  </div>
+  <div class="form-group row">
+    <label for="imputContent0" class="col-sm-1 col-form-label">URL</label>
+    <div class="col-sm-6">
+      <input type="text"  class="form-control" id="imputContent0" ng-model="content" placeholder = "https://rateyourmusic.com/" />
+  </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-6">
+      <button class="btn btn-primary" ng-click="app.addBookmark()">Add</button>
+  </div>
+</div>
 </form>
 
 <br>
 
-<div ng-repeat="bookmark in app.bms">
-    <a target="_blank" href = "{{ bookmark.content }}">{{bookmark.title}}</a>
-        <div class ="container">
-            <input type="text" ng-model="bookmark.title"/>
-            <button ng-click="app.updateBookmark(bookmark)">Update</button>
-            <button ng-click="app.deleteBookmark(bookmark)">Delete</button>
-        </div>
+<div class="form-group row">
+    <div ng-repeat="bookmark in app.bms">
+        <div class = "col">
+           <a target="_blank" href = "{{ bookmark.content }}">{{bookmark.title}}</a><br>
+           <input type="text" ng-model="bookmark.title"/><br>
+           <button type="button" class="btn btn-primary btn-md" ng-click="app.updateBookmark(bookmark)">Update</button>
+           <button type="button" class="btn btn-danger btn-md" ng-click="app.deleteBookmark(bookmark)">Delete</button>
+       </div>
+   </div>
 </div>
 
 
